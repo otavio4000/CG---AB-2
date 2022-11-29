@@ -1,0 +1,1 @@
+gcc cg.c -o fut -lglut -lGLU -lGL -lm
