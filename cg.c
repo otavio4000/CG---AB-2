@@ -11,6 +11,7 @@ const int larguraCampo = 525, alturaCampo = 340, larguraTela = larguraCampo + 60
 int eye[3] = {30, alturaCampo / 2, 100}, center[3] = {30 + larguraCampo / 2, 10 + alturaCampo / 2, 0}, up[3] = {0, 0, 1}, placar[2] = {0, 0}, t_lapse = 500, luz = 1;
 int bola_x = center_ball[0], bola_y = center_ball[1];
 GLuint textures[3];
+GLint especMaterial = 60;
 
 void DefineIluminacao (void)
 {
@@ -21,7 +22,6 @@ void DefineIluminacao (void)
  
         // Capacidade de brilho do material
         GLfloat especularidade[4]={1.0,1.0,1.0,1.0}; 
-        GLint especMaterial = 60;
  		if(luz){
 		    // Define a refletância do material 
 		    glMaterialfv(GL_FRONT,GL_SPECULAR, especularidade);
@@ -292,6 +292,12 @@ void keyboard_handler(unsigned char key, int x, int y){
         break;
 	case 'o':
         center[1]-=UNIT_PIXEL;
+        break;
+	case 'n':
+        especMaterial = especMaterial + 5;
+        break;
+	case 'm':
+        especMaterial = especMaterial - 5;
         break;
     case 'f':
         if(up[0] == 0){
